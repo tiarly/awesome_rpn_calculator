@@ -8,8 +8,6 @@ require_relative 'interfaces/web_socket'
 
 module AwesomeRPNCalculator
   class InterfaceLoader
-    NotFoundInterfaceError = Class.new(StandardError)
-
     INTERFACES = {
       cli: Interfaces::CLI,
       file: Interfaces::File,
@@ -20,7 +18,7 @@ module AwesomeRPNCalculator
     class << self
       def call(key)
         INTERFACES[key].tap do |interface|
-          raise NotFoundInterfaceError unless interface
+          raise Errors::InvalidInitialization unless interface
         end
       end
     end

@@ -21,9 +21,9 @@ module AwesomeRPNCalculator
         end
 
         context 'when a trying to use a division by zero calculation' do
-          it 'raises ZeroDivisionError' do
+          it 'raises Errors::ZeroDivision' do
             expect { described_class.call(1, 0) }
-              .to raise_error ZeroDivisionError
+              .to raise_error Errors::ZeroDivision
           end
         end
       end

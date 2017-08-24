@@ -46,15 +46,15 @@ module AwesomeRPNCalculator
             allow($stdin).to receive(:gets).and_return('1', nil)
             allow(ProcessorLoader).to receive(:call).and_return(processor)
             allow(processor).to receive(:new).and_return(instance)
-            allow(instance).to receive(:process).and_raise(StandardError)
+            allow(instance).to receive(:process).and_raise(Errors::Base.new('Custom Error'))
             allow(Writer).to receive(:write)
           end
 
-          it 'gracefully handles StandarErrors' do
+          it 'gracefully handles Errors::Base' do
             described_class.start(processor: :rpn)
 
             expect(Writer)
-              .to have_received(:write).with('An error has happend. Please try again.')
+              .to have_received(:write).with('Custom Error')
           end
         end
       end

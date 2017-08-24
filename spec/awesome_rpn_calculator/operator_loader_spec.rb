@@ -26,7 +26,7 @@ module AwesomeRPNCalculator
       context 'when loading an unkown operator' do
         it 'raises NotFoundOperatorError' do
           expect { described_class.call('**') }
-            .to raise_error OperatorLoader::NotFoundOperatorError
+            .to raise_error Errors::InvalidInitialization
         end
       end
     end

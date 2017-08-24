@@ -3,8 +3,6 @@
 module AwesomeRPNCalculator
   module Processors
     class RPN
-      NotEnoughOperandsForCalculationError = Class.new(StandardError)
-
       def initialize
         @stack = Stack.new []
       end
@@ -23,7 +21,8 @@ module AwesomeRPNCalculator
       attr_accessor :stack
 
       def calculate(operator)
-        raise NotEnoughOperandsForCalculationError unless stack.calculable?
+        raise Errors::NotEnoughOperandsForCalculation unless stack.calculable?
+
         first_operand, last_operand = stack.pop(2)
         stack.add(TokenCalculator.call(operator, first_operand, last_operand))
       end

@@ -1,5 +1,10 @@
 # frozen_string_literal: true
 
+require 'awesome_rpn_calculator/errors/base'
+require 'awesome_rpn_calculator/errors/invalid_initialization'
+require 'awesome_rpn_calculator/errors/invalid_input'
+require 'awesome_rpn_calculator/errors/not_enough_operands_for_calculation'
+require 'awesome_rpn_calculator/errors/zero_division'
 require 'awesome_rpn_calculator/interface_loader'
 require 'awesome_rpn_calculator/operator_loader'
 require 'awesome_rpn_calculator/processor_loader'

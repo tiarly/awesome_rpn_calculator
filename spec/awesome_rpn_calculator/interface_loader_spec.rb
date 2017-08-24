@@ -26,7 +26,7 @@ module AwesomeRPNCalculator
       context 'when loading an unkown interface' do
         it 'raises NotFoundInterfaceError' do
           expect { described_class.call(:invalid_interface) }
-            .to raise_error InterfaceLoader::NotFoundInterfaceError
+            .to raise_error Errors::InvalidInitialization
         end
       end
     end

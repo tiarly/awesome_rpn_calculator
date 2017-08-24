@@ -13,7 +13,7 @@ module AwesomeRPNCalculator
         context 'when loading an unkown processor' do
           it 'raises NotFoundProcessorError' do
             expect { described_class.call(:invalid_processor) }
-              .to raise_error ProcessorLoader::NotFoundProcessorError
+              .to raise_error Errors::InvalidInitialization
           end
         end
       end

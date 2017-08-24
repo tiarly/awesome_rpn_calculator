@@ -6,6 +6,8 @@ module AwesomeRPNCalculator
       class << self
         def call(first_operand, second_operand)
           first_operand / second_operand
+        rescue ZeroDivisionError
+          raise Errors::ZeroDivision
         end
       end
     end

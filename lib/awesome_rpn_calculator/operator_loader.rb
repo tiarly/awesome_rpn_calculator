@@ -7,8 +7,6 @@ require_relative 'operators/sum'
 
 module AwesomeRPNCalculator
   class OperatorLoader
-    NotFoundOperatorError = Class.new(StandardError)
-
     OPERATORS = {
       '/' => Operators::Division,
       '*' => Operators::Multiplication,
@@ -19,7 +17,7 @@ module AwesomeRPNCalculator
     class << self
       def call(key)
         OPERATORS[key].tap do |operator|
-          raise NotFoundOperatorError unless operator
+          raise Errors::InvalidInitialization unless operator
         end
       end
     end

@@ -26,7 +26,7 @@ module AwesomeRPNCalculator
 
           it 'raises NotEnoughOperandsForCalculationError' do
             expect { described_class.new.process(tokens) }
-              .to raise_error(RPN::NotEnoughOperandsForCalculationError)
+              .to raise_error(Errors::NotEnoughOperandsForCalculation)
           end
         end
       end

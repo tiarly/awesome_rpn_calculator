@@ -12,11 +12,13 @@ module AwesomeRPNCalculator
       def start(options)
         @options = options
 
-        while (stdin = scanner.read)
+        while (input = scanner.read)
           begin
-            writer.write(run_processor_for(stdin))
-          rescue StandardError
-            writer.write 'An error has happend. Please try again.'
+            exit if input == 'q'
+            raise Errors::InvalidInput if /[a-zA-Z]+/.match?(input)
+            writer.write(run_processor_for(input))
+          rescue Errors::Base => error
+            writer.write error.message
           end
         end
       end
