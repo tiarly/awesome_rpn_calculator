@@ -6,15 +6,23 @@ module AwesomeRPNCalculator
       extend Interfaceable
 
       class << self
-        def start(_)
+        def start(options)
+          @options = options
+
           while (stdin = scanner.read)
-            # @TODO process calculations from stdin input
+            processor.process(stdin)
           end
         rescue StandardError
           writer.write 'An error has happend. Please try again.'
         end
 
         private
+
+        attr_reader :options
+
+        def processor
+          @processor = ProcessorLoader.call(options[:processor])
+        end
 
         def scanner
           @scanner ||= Scanner

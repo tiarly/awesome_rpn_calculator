@@ -3,7 +3,7 @@
 module AwesomeRPNCalculator
   class Runner
     class << self
-      def run(interface: :cli, options: {})
+      def run(interface: :cli, options: { processor: :rpn })
         InterfaceLoader.call(interface).start(options)
       end
     end
