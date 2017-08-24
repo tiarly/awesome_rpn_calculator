@@ -1,4 +1,6 @@
 AllCops:
+  Exclude:
+    - '*.gemspec'
   TargetRubyVersion: 2.4.1
 
 Metrics/BlockLength:
