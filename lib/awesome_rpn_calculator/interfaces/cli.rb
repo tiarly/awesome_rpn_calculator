@@ -3,34 +3,42 @@
 module AwesomeRPNCalculator
   module Interfaces
     class CLI
-      extend Interfaceable
+      include Interfaceable
 
-      class << self
-        def start(options)
-          @options = options
+      def self.start(*args)
+        new.start(*args)
+      end
 
-          while (stdin = scanner.read)
-            processor.process(stdin)
+      def start(options)
+        @options = options
+
+        while (stdin = scanner.read)
+          begin
+            writer.write(run_processor_for(stdin))
+          rescue StandardError
+            writer.write 'An error has happend. Please try again.'
           end
-        rescue StandardError
-          writer.write 'An error has happend. Please try again.'
         end
+      end
 
-        private
+      private
 
-        attr_reader :options
+      attr_reader :options
 
-        def processor
-          @processor = ProcessorLoader.call(options[:processor])
-        end
+      def run_processor_for(input)
+        processor.process(TokenCollectionFactory.call(input))
+      end
 
-        def scanner
-          @scanner ||= Scanner
-        end
+      def processor
+        @processor ||= ProcessorLoader.call(options[:processor]).new
+      end
 
-        def writer
-          @writer ||= Writer
-        end
+      def scanner
+        @scanner ||= Scanner
+      end
+
+      def writer
+        @writer ||= Writer
       end
     end
   end

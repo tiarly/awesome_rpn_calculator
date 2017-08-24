@@ -4,8 +4,9 @@ module AwesomeRPNCalculator
   class Scanner
     class << self
       def read
-        input = $stdin.gets
-        input.chomp
+        $stdin.gets.chomp
+      rescue
+        nil
       end
     end
   end

@@ -3,12 +3,10 @@
 module AwesomeRPNCalculator
   module Interfaces
     class File
-      extend Interfaceable
+      include Interfaceable
 
-      class << self
-        def start(_)
-          raise NotImplementedError
-        end
+      def start(_)
+        raise NotImplementedError
       end
     end
   end

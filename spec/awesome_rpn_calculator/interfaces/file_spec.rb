@@ -7,11 +7,11 @@ module AwesomeRPNCalculator
     RSpec.describe File do
       describe '#start' do
         it 'responds to a public start' do
-          expect(described_class).to respond_to(:start)
+          expect(described_class.new).to respond_to(:start)
         end
 
         it 'raises NotImplementedError' do
-          expect { described_class.start(nil) }.to raise_error NotImplementedError
+          expect { described_class.new.start(nil) }.to raise_error NotImplementedError
         end
       end
     end
