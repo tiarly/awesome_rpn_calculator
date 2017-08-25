@@ -5,9 +5,7 @@ module AwesomeRPNCalculator
     class Division
       class << self
         def call(first_operand, second_operand)
-          first_operand / second_operand
-        rescue ZeroDivisionError
-          raise Errors::ZeroDivision
+          first_operand.to_f / second_operand
         end
       end
     end

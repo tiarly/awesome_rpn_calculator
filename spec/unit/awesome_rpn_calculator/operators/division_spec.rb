@@ -19,13 +19,6 @@ module AwesomeRPNCalculator
             expect(described_class.call(6.0, 2.0)).to eq 3.0
           end
         end
-
-        context 'when a trying to use a division by zero calculation' do
-          it 'raises Errors::ZeroDivision' do
-            expect { described_class.call(1, 0) }
-              .to raise_error Errors::ZeroDivision
-          end
-        end
       end
     end
   end
