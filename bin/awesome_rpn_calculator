@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'bundler/setup'
+require 'awesome_rpn_calculator'
+
+puts 'Welcome to the AwesomeRPNCalculator Gem, enjoy!'
+
+AwesomeRPNCalculator::Runner.run
